@@ -13,6 +13,6 @@ public class Gasto extends Dinero {
 	
 	@Override
 	public String toString() {
-		return "El Gasto es " + dinero + "por la descripcion: " + description;
+		return "El Gasto es " + dinero + " € por la descripcion: " + description;
 	}
 }

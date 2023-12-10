@@ -12,7 +12,7 @@ public class Ingreso extends Dinero{
 	}
 	@Override
 	public String toString() {
-		return "El Ingreso es " + dinero + "por la descripcion: " + description;
+		return "El Ingreso es " + dinero + " € por la descripcion: " + description;
 	}
 	
 }

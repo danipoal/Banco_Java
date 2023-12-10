@@ -54,6 +54,7 @@ public class Cuenta{
 			return saldo;
 		}else {
 			GastoException error1 = new GastoException();
+			System.out.println("No tienes suficiente dinero");
 			return saldo;
 		}
 

@@ -31,9 +31,12 @@ public class Usuario {
 	
 	public boolean setDNI(String DNI) {
 		
-		
-		this.DNI = DNI;
-		return DNI.matches("\\d{8}[A-Za-z]");		
+		if(DNI.matches("\\d{8}[A-Za-z]")) {			
+			this.DNI = DNI;
+			return true;
+		}else {
+			return false;
+		}
 		
 	}
 	

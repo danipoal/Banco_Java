@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.Scanner;
 /** PAC DESARROLLO M03B 1S2324
@@ -13,8 +14,9 @@ public class Main {
     	
     	Usuario usuario = LeerUsuario();
     	Cuenta cuenta = new Cuenta(usuario);
+    	cuenta.setUsuario(usuario);
     	do {
-    		mostrarMenu();
+    		mostrarMenu(cuenta);
 
     	} while(true);
     
@@ -24,22 +26,21 @@ public class Main {
     
     
 
-/**** Mostrar las distintas opciones validas del Menu de Opciones ****/
-    public static void mostrarMenu(){
+/**** Mostrar las distintas opciones validas del Menu de Opciones */
+    public static void mostrarMenu(Cuenta cuenta){
     	//inserta código aquí
-    	Cuenta cuenta = new Cuenta(LeerUsuario());
     	System.out.println("Realiza una nueva acción" + 
     					"\n1 Introduce un nuevo gasto" +
     					"\n2 Introduce un nuevo ingreso" +
     					"\n3 Mostrar gastos" +
     					"\n4 Mostrar ingresos" +
     					"\n5 Mostrar saldo" +
-    					"\n0 Salir");
-    	Scanner sc = new Scanner(System.in);
-    	sc.nextLine();
-    	String opcion = sc.nextLine();
+    					"\n0 Salir\n");
+    	Scanner nuevoScanner = new Scanner(System.in);
+    	String opcion = "ola";
     	
-    	sc.nextLine();
+    		opcion = nuevoScanner.nextLine();
+
     	
     	
 		if(opcion.equals("1")) {
@@ -52,14 +53,14 @@ public class Main {
     	}else if(opcion.equals("4")) {
     		imprimirIngresos(cuenta);
     	}else if(opcion.equals("5")) {
-    			
 				cuenta.toString();
     	}else if(opcion.equals("0")) {
+    		nuevoScanner.close();
     		System.exit(0);
     	}
-    	sc.close();
-    	
-    	
+    	//nuevoScanner.nextLine();
+		
+
     	
 }
 
@@ -68,7 +69,7 @@ public class Main {
     private static Usuario LeerUsuario(){
     	
     	Usuario usuario = new Usuario();
-   
+    	boolean checkDni;
     	Scanner sc = new Scanner(System.in); 
     
     
@@ -81,13 +82,14 @@ public class Main {
     	int edad = sc.nextInt();
     	sc.nextLine();
     	usuario.setEdad(edad);
+    	    	
+    	do{
+    		System.out.println("Introduce tu DNI:");
+        	String DNI = sc.nextLine();
+        	checkDni = usuario.setDNI(DNI);
+    	}while(!checkDni);
     	
-    
-    	System.out.println("Introduce tu DNI:");
-    	String DNI = sc.nextLine();
-    	usuario.setNombre(DNI);
-    	
-    	sc.close();
+    	//sc.close();
         return usuario;
     }
 
@@ -128,7 +130,7 @@ public class Main {
     	double cantidad = sc.nextDouble();
     	sc.nextLine();
     	Gasto gasto = new Gasto(cantidad, descripcion);
-    	sc.close();
+    	//sc.close();
         
     }
 
